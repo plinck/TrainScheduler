@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Giphy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <h2>Train Scheduler</h2>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-container">
+        <!-- Main Content Container -->
+        <section class="row">
+            <div class="row">
+                <div class="section-header row">
+                    <div class="col-12">Train Schedule</div>
+                    <div id="errorMessage" class="col-12"></div>
+                </div>
+                <article class="articles row">
+                    <table class="trains" id='train-table'>
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency (min)</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Minutes Awy</th>
+                            </tr>
+                        </thead>
+                        <tbody id="train-table-data">
+                        </tbody>
+                    </table>
+                </article>
+                <div class="section-header row">
+                    <div class="col-12">Add A Train</div>
+                    <div id="errorMessage" class="col-12"></div>
+                </div>
+                <article class="favorites row">
+                    <!-- Train form -->
+                    <!-- Entry Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="train-name">Train Name</label>
+                            <input class="form-control" id="train-name" placeholder="Trenton Express" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="train-destination">Destination</label>
+                            <input class="form-control" id="train-destination" placeholder="Trenton" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="train-first-time">First Time (HH:MM)</label>
+                            <input class="form-control" id="train-first-time" placeholder="13:00" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency">Frequency (min)</label>
+                            <input class="form-control" id="frequency" placeholder="20" type="text">
+                        </div>
+                        <button class="" id="add-train-btn">Submit</button>
+                    </form>
+
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    </script>
+
+</body>
+
+</html>

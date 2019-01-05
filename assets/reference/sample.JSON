@@ -1,0 +1,120 @@
+{
+  "status": "OK",
+  "copyright": "Copyright (c) 2018 The New York Times Company. All Rights Reserved.",
+  "response": {
+    "docs": [{
+        "web_url": "https://www.nytimes.com/reuters/2018/12/17/sports/17reuters-football-nfl-afcwest-notebook.html",
+        "snippet": "Denver Broncos: The Broncos (6-8) are officially out of playoff contention, but they still have a milestone to play for. The team hasn't had back-to-back losing seasons since 1971-72, a streak it would keep alive with wins over the Raiders and Cha...",
+        "blog": {},
+        "source": "Reuters",
+        "multimedia": [{
+          "rank": 0,
+          "subtype": "xlarge",
+          "caption": null,
+          "credit": null,
+          "type": "image",
+          "url": "images/2018/12/18/world/18USBriefing-amcore/merlin_147972357_57619b65-a711-4863-877e-6d786a26d59a-articleLarge.jpg",
+          "height": 400,
+          "width": 600,
+          "legacy": {
+            "xlarge": "images/2018/12/18/world/18USBriefing-amcore/merlin_147972357_57619b65-a711-4863-877e-6d786a26d59a-articleLarge.jpg",
+            "xlargewidth": 600,
+            "xlargeheight": 400
+          },
+          "subType": "xlarge",
+          "crop_name": "articleLarge"
+        }],
+        "headline": {
+          "main": "Raiders' Gruden Recalls Oakland Coliseum Memories",
+          "kicker": null,
+          "content_kicker": null,
+          "print_headline": "Raiders' Gruden Recalls Oakland Coliseum Memories",
+          "name": null,
+          "seo": null,
+          "sub": null
+        },
+        "keywords": [],
+        "pub_date": "2018-12-17T23:52:34+0000",
+        "document_type": "article",
+        "news_desk": "None",
+        "byline": {
+          "original": "By REUTERS",
+          "person": [],
+          "organization": "REUTERS"
+        },
+        "type_of_material": "News",
+        "_id": "5c1836c400a1bc2872e992f2",
+        "word_count": 472,
+        "score": 17.505512,
+        "uri": "nyt://article/62c566df-9725-577a-a444-0ed6dd4fdca2"
+      },
+      {
+        "web_url": "https://www.nytimes.com/aponline/2018/12/16/sports/football/ap-fbn-eagles-rams.html",
+        "snippet": "The Philadelphia Eagles already knew Nick Foles could do it.",
+        "blog": {},
+        "source": "AP",
+        "multimedia": [],
+        "headline": {
+          "main": "Back in the Game: Foles Leads Eagles Past Rams 30-23",
+          "kicker": null,
+          "content_kicker": null,
+          "print_headline": "Back in the Game: Foles Leads Eagles Past Rams 30-23",
+          "name": null,
+          "seo": null,
+          "sub": null
+        },
+        "keywords": [],
+        "pub_date": "2018-12-17T04:49:16+0000",
+        "document_type": "article",
+        "news_desk": "None",
+        "section_name": "Pro Football",
+        "byline": {
+          "original": "By THE ASSOCIATED PRESS",
+          "person": [],
+          "organization": "THE ASSOCIATED PRESS"
+        },
+        "type_of_material": "News",
+        "_id": "5c172ace00a1bc2872e990c3",
+        "word_count": 922,
+        "score": 6.901193,
+        "uri": "nyt://article/341f7809-0ebb-5d1f-91f0-4fc5ea408eff"
+      },
+      {
+        "web_url": "https://www.nytimes.com/reuters/2018/12/17/sports/football/17reuters-football-nfl-roundup.html",
+        "snippet": "Ben Roethlisberger threw two touchdown passes, and the Pittsburgh Steelers' defense stopped Tom Brady and the visiting New England Patriots twice in the red zone in the fourth quarter to seal a 17-10 win Sunday.",
+        "blog": {},
+        "source": "Reuters",
+        "multimedia": [],
+        "headline": {
+          "main": "NFL Roundup: Steelers Knock Off Brady, Patriots",
+          "kicker": null,
+          "content_kicker": null,
+          "print_headline": "NFL Roundup: Steelers Knock Off Brady, Patriots",
+          "name": null,
+          "seo": null,
+          "sub": null
+        },
+        "keywords": [],
+        "pub_date": "2018-12-17T05:19:42+0000",
+        "document_type": "article",
+        "news_desk": "None",
+        "section_name": "Pro Football",
+        "byline": {
+          "original": "By REUTERS",
+          "person": [],
+          "organization": "REUTERS"
+        },
+        "type_of_material": "News",
+        "_id": "5c1731ef00a1bc2872e990d3",
+        "word_count": 1425,
+        "score": 6.432636,
+        "uri": "nyt://article/77698967-30ec-56db-bb7c-a1b91311a78c"
+      }
+    ],
+    "meta": {
+      "hits": 3,
+      "offset": 0,
+      "time": 29
+    }
+  }
+}
