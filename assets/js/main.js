@@ -58,6 +58,43 @@ function errorRender(err) {
     $("#errorMessage").html(`${err.statusText}`);
 }
 
+// Calculate the next train time
+function calcNextTrainTime(firstTime, frequency) {
+    let nextTrainTime; // Next train time
+    let minutesToNextTrain; // number of minutes to next train
+
+    // convert entered time into moment time in hours, minutes        
+    let firstTimeArray = firstTime.split(":");
+    let firstTrainTime = moment().hours(firstTimeArray[0]).minutes(firstTimeArray[1]);
+
+    // If the first train is later than the current time, arrival is first train time
+    if (firstTrainTime > moment()) {
+        nextTrainTime = firstTrainTime.format("hh:mm A");
+        minutesToNextTrain = firstTrainTime.diff(moment(), "minutes");
+    } else {
+        // The next train in minutes is calculated by:
+        // 1) Get minutes past first time
+        // 2) Get the remainder of those minutes divided by the frequency in minutes
+        // ---> This gives you how many minutes have passed since the last time it came
+        // 3) Subtracting that from the frequenct gives you how much time is left to the next train
+        // Then just add those minutes to current time to get next arrival time
+        let minutesFromFirstTime = moment().diff(firstTrainTime, "minutes");
+        let minutesFromLatestArrival = minutesFromFirstTime % frequency;
+
+        minutesToNextTrain = frequency - minutesFromLatestArrival;
+
+        // To calculate the arrival time, add the tMinutes to the current time
+        nextTrainTime = moment().add(minutesToNextTrain, "m").format("hh:mm A");
+    }
+
+    let nextTrain = {};
+    nextTrain.minutesAway = minutesToNextTrain;
+    nextTrain.arrivalTime = nextTrainTime;
+
+    return nextTrain;
+
+}
+
 // Wait for doc to be ready
 $(document).ready(function () {
     getTrains();
@@ -65,16 +102,19 @@ $(document).ready(function () {
     $("#add-train-btn").on("click", function (event) {
         event.preventDefault();
 
-        // Grabs user input
-        // var trainTime = moment($("#first-train-time").val().trim(), "MM/DD/YYYY").format("X");
-        var trainObj = {
+        // Grab user input
+
+        // Validate user Input
+
+
+        let trainObj = {
             name: $("#train-name").val().trim(),
             destination: $("#train-destination").val().trim(),
-            firstTime: $("#train-first-time").val().trim(),
+            firstTime: $("#train-first-time").val(),
             frequency: $("#frequency").val().trim()
         };
 
-        // Add employee object to firebase to the database
+        // Add train object to firebase to the database
         trainsRef.push(trainObj);
 
         // Clear text-boxes
@@ -90,23 +130,15 @@ $(document).ready(function () {
         console.log(snap.val());
         let trainObj = snap.val();
 
-        // Employee Info
-        console.log(trainObj);
-
-        // calc the next arrival time using moment.js
-        let nextTime = trainObj.firstTime;
-        // let nextTime = moment.unix(trainObj.firstTime).format("HH:MM");
-
-        // Calculate the time in minutes for next train worked using moments.js
-        let minutesAway = 5;
+        let nextTrain = calcNextTrainTime(trainObj.firstTime, trainObj.frequency);
 
         // Create the new row
         let newRow = $("<tr>").append(
             $("<td>").text(trainObj.name),
             $("<td>").text(trainObj.destination),
             $("<td>").text(trainObj.frequency),
-            $("<td>").text(nextTime),
-            $("<td>").text(minutesAway)
+            $("<td>").text(nextTrain.arrivalTime),
+            $("<td>").text(nextTrain.minutesAway)
         );
 
         // Append the new row to the table
