@@ -65,6 +65,14 @@ section {
     color: #ffffff;
 }
 
+.form-input {
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 10px;
+}
+
 /* make sure the form fills the space */
 #searchForm, #infoSubmit {
     width: 100%;
@@ -108,8 +116,8 @@ input[type=submit] {
  }
 
 /* Button */
-#submit,
-#reset {
+.submit,
+.reset {
     border: 0;
     box-shadow: none;
     border-radius: 2px;
@@ -119,8 +127,8 @@ input[type=submit] {
 }
 
 /* When mouse hovers over */
-#submit:hover,
-#reset:hover {
+.submit:hover,
+.reset:hover {
     background: yellow;
     color: #777777;
 }
@@ -128,7 +136,7 @@ input[type=submit] {
 .articles {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
     text-align: center;
 }
@@ -196,29 +204,6 @@ input[type=submit] {
     background-color: rgba(0,0,0,.60);
     padding: 4px;
     margin: 0px;
-}
-
-
-.attack {
-    display: block;
-    align-self: center;
-}
-
-#attack-btn {
-    visibility: hidden;
-    padding: 6px 12px 6px 12px;
-    background-color: blue;
-    border: 0;
-    color: yellow;
-    border-radius: 8px;
-    font-size: 1.7em;
-}
-
-#attack-btn:hover,
-#attack-btn:active {
-    background-color: yellow;
-    color: blue;
-    cursor: pointer;
 }
 
 

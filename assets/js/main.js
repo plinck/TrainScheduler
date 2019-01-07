@@ -125,20 +125,35 @@ $(document).ready(function () {
 
     });
 
+    $(document.body).on("click", ".delete", function () {
+        var key = $(this).attr("data-key");
+
+        // Remove from DOM
+        $(`#${key}`).empty();
+
+        // Delete train object to firebase to the database
+        let trainRef = trainsRef.child(key);
+        trainRef.remove();
+    
+    });
+
     // Each time a train is added, put a new row in the table
     trainsRef.on("child_added", function (snap) {
         console.log(snap.val());
         let trainObj = snap.val();
+        let trainRef = snap.key;
 
         let nextTrain = calcNextTrainTime(trainObj.firstTime, trainObj.frequency);
 
         // Create the new row
-        let newRow = $("<tr>").append(
+        let newRow = $(`<tr id="${trainRef}" data-key="${trainRef}">`).append(
             $("<td>").text(trainObj.name),
             $("<td>").text(trainObj.destination),
             $("<td>").text(trainObj.frequency),
             $("<td>").text(nextTrain.arrivalTime),
-            $("<td>").text(nextTrain.minutesAway)
+            $("<td>").text(nextTrain.minutesAway),
+            $("<td>").html(`<button class="delete" data-key="${trainRef}">Delete</button>`),
+            $("<td>").html(`<button class="update" data-key="${trainRef}">Edit</button>`)
         );
 
         // Append the new row to the table
