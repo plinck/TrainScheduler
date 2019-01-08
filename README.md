@@ -1,6 +1,7 @@
 # Firebase Train Scheduler
 
 ## Overview
+[![Train Schduler](assets/images/275x200TrainScheduler.png)](https://plinck.github.io/TrainScheduler/)
 
 This is a train schedule application that uses Firebase to host arrival and departure data for trains. First, you schedule a train by entering relevant information about when it is first scheduled and how often it runs.  Then, the app shows the schedule of all the trains and when the next arrival time is and how many minutes until it arrives.
   
@@ -11,19 +12,18 @@ This is a train schedule application that uses Firebase to host arrival and depa
   * Frequency -- in minutes
   
 * The app calculates when the next train will arrive based on current time and frequency
-* The app updates the train arrivals (next time and minutes away) every minute to keep teh times up to the minute on the web page
+* The app updates the train arrivals (next time and minutes away) every minute to keep the times up to the minute on the web page
+* I added a `delete` button to the list of trains to allow you to delete it
 
 ### To Do
-
-* Get icon for portfolios and add to them
-* clean up HTML and design
-* Refactor code a bit
   
 ### Possible New Features
 
-* Add `update` and `remove` buttons for each train. Let the user edit the row's elements-- allow them to change a train's Name, Destination and Arrival Time (and then, by relation, minutes to arrival).
+* Add `update` button for each train. Let the user edit the row's elements-- allow them to change a train's Name, Destination and Arrival Time (and then, by relation, minutes to arrival).
 
 * As a final challenge, make it so that only users who log into the site with their Google or GitHub accounts can use your site. You'll need to read up on Firebase authentication for this bonus exercise.
+
+* A bit more refactroing of code and design improvements as time permits
 
 ## Linked my responsive portffolio and my bootstrap portfolio sites
 
