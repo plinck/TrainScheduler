@@ -23,13 +23,14 @@ firebase.initializeApp(config);
 let database = firebase.database();
 
 // --------------------------------------------------------------
-// Reference where all employees are stored
+// Reference where all train schedules are stored
 let trainsRef = database.ref("/train_schedules");
+let trainSchedules = []; // array of objects for all the train schedules
+const updateInterval = 60000; // Amount of time between each update interval in milliseconds (so 1 minute)
+
 
 // Helper functiion for AJAX calls
 function httpGet(requestURL, aCallback) {
-
-    // I had to use the JSONP method since the one used in class caused CORS issues
     $.ajax({
         url: requestURL,
         method: 'GET',
@@ -45,17 +46,45 @@ function httpGet(requestURL, aCallback) {
     });
 }
 
-// Get all trains on schedule
-function getTrains() {
-
-}
-
 // handle errors when retrieving GIFs
 function errorRender(err) {
     console.log(`Error: ${err.statusText}`);
     alert(`Error: ${err.statusText}`);
 
     $("#errorMessage").html(`${err.statusText}`);
+}
+
+// render the HTML for the array of train schedules
+function schedulesRender(schedules) {
+
+    $("#train-table-data").empty();
+
+    for (let schedule in schedules) {
+        let trainObj = schedules[schedule];
+        let nextTrain = calcNextTrainTime(trainObj.firstTime, trainObj.frequency);
+
+        let newRow = $(`<tr id="${trainObj.ref}" data-key="${trainObj.ref}">`).append(
+            $("<td>").text(trainObj.name),
+            $("<td>").text(trainObj.destination),
+            $("<td>").text(trainObj.frequency),
+            $("<td>").text(nextTrain.arrivalTime),
+            $("<td>").text(nextTrain.minutesAway),
+            $("<td>").html(`<button class="delete" data-key="${trainObj.ref}">Delete</button>`),
+            $("<td>").html(`<button class="update" data-key="${trainObj.ref}">Edit</button>`)
+        );
+
+        // Append the new row to the table
+        $("#train-table-data").append(newRow);
+    }
+}
+
+// remove a schedule from the array based on key
+function removeSchedule(schedules, ref) {
+    for (let i in schedules) {
+        if (schedules[i].ref === ref) {
+            let removed = schedules.splice(i,1);
+        }
+    }
 }
 
 // Calculate the next train time
@@ -92,12 +121,10 @@ function calcNextTrainTime(firstTime, frequency) {
     nextTrain.arrivalTime = nextTrainTime;
 
     return nextTrain;
-
 }
 
 // Wait for doc to be ready
 $(document).ready(function () {
-    getTrains();
 
     $("#add-train-btn").on("click", function (event) {
         event.preventDefault();
@@ -125,40 +152,54 @@ $(document).ready(function () {
 
     });
 
+    // Delete train schedule
     $(document.body).on("click", ".delete", function () {
         var key = $(this).attr("data-key");
 
         // Remove from DOM
         $(`#${key}`).empty();
 
-        // Delete train object to firebase to the database
+        // Delete train object from firebase
         let trainRef = trainsRef.child(key);
         trainRef.remove();
-    
+
+        // Remove this schedule from the array of schedules
+        removeSchedule(trainSchedules, trainRef);
+
     });
 
     // Each time a train is added, put a new row in the table
     trainsRef.on("child_added", function (snap) {
-        console.log(snap.val());
         let trainObj = snap.val();
-        let trainRef = snap.key;
+        trainObj.ref = snap.key;
 
         let nextTrain = calcNextTrainTime(trainObj.firstTime, trainObj.frequency);
 
         // Create the new row
-        let newRow = $(`<tr id="${trainRef}" data-key="${trainRef}">`).append(
+        let newRow = $(`<tr id="${trainObj.ref}" data-key="${trainObj.ref}">`).append(
             $("<td>").text(trainObj.name),
             $("<td>").text(trainObj.destination),
             $("<td>").text(trainObj.frequency),
             $("<td>").text(nextTrain.arrivalTime),
             $("<td>").text(nextTrain.minutesAway),
-            $("<td>").html(`<button class="delete" data-key="${trainRef}">Delete</button>`),
-            $("<td>").html(`<button class="update" data-key="${trainRef}">Edit</button>`)
+            $("<td>").html(`<button class="delete" data-key="${trainObj.ref}">Delete</button>`),
+            $("<td>").html(`<button class="update" data-key="${trainObj.ref}">Edit</button>`)
         );
 
         // Append the new row to the table
         $("#train-table-data").append(newRow);
+
+        // Add this schedule to the array of schedules
+        trainSchedules.push(trainObj);
     });
+
+    // This updates the train scheduler on an interval
+    function updateSchedules() {
+        schedulesRender(trainSchedules);
+    }
+
+    // Update the next train time every minute
+    let updateIntervalTimer = setInterval(updateSchedules, updateInterval);
 
 
 }); // (document).ready

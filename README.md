@@ -11,6 +11,7 @@ This is a train schedule application that uses Firebase to host arrival and depa
   * Frequency -- in minutes
   
 * The app calculates when the next train will arrive based on current time and frequency
+* The app updates the train arrivals (next time and minutes away) every minute to keep teh times up to the minute on the web page
 
 ### To Do
 
@@ -19,8 +20,6 @@ This is a train schedule application that uses Firebase to host arrival and depa
 * Refactor code a bit
   
 ### Possible New Features
-
-* Automatically update "minutes to arrival" and "next train time" once every minute.
 
 * Add `update` and `remove` buttons for each train. Let the user edit the row's elements-- allow them to change a train's Name, Destination and Arrival Time (and then, by relation, minutes to arrival).
 
