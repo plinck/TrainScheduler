@@ -3,7 +3,7 @@
 ## Overview
 [![Train Schduler](assets/images/275x200TrainScheduler.png)](https://plinck.github.io/TrainScheduler/)
 
-This is a train schedule application that uses Firebase to host arrival and departure data for trains. First, you schedule a train by entering relevant information about when it is first scheduled and how often it runs.  Then, the app shows the schedule of all the trains and when the next arrival time is and how many minutes until it arrives.
+This is a Totrain schedule application that uses Firebase to host arrival and departure data for trains. First, you schedule a train by entering relevant information about when it is first scheduled and how often it runs.  Then, the app shows the schedule of all the trains and when the next arrival time is and how many minutes until it arrives.
   
 * When adding trains, you provide the following:
   * Train Name
@@ -15,7 +15,8 @@ This is a train schedule application that uses Firebase to host arrival and depa
 * The app updates the train arrivals (next time and minutes away) every minute to keep the times up to the minute on the web page
 * I added a `delete` button to the list of trains to allow you to delete it
 
-### To Do
+### Live Link
+* [Demo](https://plinck.github.io/TrainScheduler/)
   
 ### Possible New Features
 
