@@ -17,7 +17,11 @@ This is a Totrain schedule application that uses Firebase to host arrival and de
 
 ### Live Link
 * [Demo](https://plinck.github.io/TrainScheduler/)
-  
+
+### Screen Shots
+* ![Demo](https://plinck.github.io/TrainScheduler/assets/images/page1.png)
+* ![Demo](https://plinck.github.io/TrainScheduler/assets/images/page2.png)
+
 ### Possible New Features
 
 * Add `update` button for each train. Let the user edit the row's elements-- allow them to change a train's Name, Destination and Arrival Time (and then, by relation, minutes to arrival).
